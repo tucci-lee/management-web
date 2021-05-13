@@ -17,7 +17,7 @@ Vue.prototype.$util = util;
 Vue.config.productionTip = false
 
 /** axios全局配置 */
-// axios.defaults.baseURL = 'http://management.2cci.cn/api';
+// axios.defaults.baseURL = 'https://management.2cci.cn/api';
 axios.defaults.baseURL = 'http://localhost:8080';
 axios.defaults.withCredentials = true;
 
@@ -37,7 +37,12 @@ axios.interceptors.response.use(
         return res;
     },
     err => {
-        element.Message.error("系统异常")
+        let data = err.response.data;
+        if(data){
+            element.Message.error(data.msg)
+        }else {
+            element.Message.error("系统异常")
+        }
         return Promise.reject(err);
     });
 

@@ -18,7 +18,7 @@
                     show-overflow-tooltip>
             </el-table-column>
             <el-table-column
-                    prop="username"
+                    prop="account"
                     label="账号"
                     width="100">
             </el-table-column>

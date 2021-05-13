@@ -13,8 +13,7 @@ function resTree(parentNodes, allNode) {
         parentNode.children = [];
         // 获取父菜单中的所有子菜单
         allNode.forEach(node => {
-            // 部门和资源都用到了树结构，所以判断了两个id（deptId，resId）
-            if (parentNode.deptId === node.pid || parentNode.resId === node.pid ) {
+            if (parentNode.id === node.pid) {
                 parentNode.children.push(node);
             }
         });
@@ -29,7 +28,6 @@ function resTree(parentNodes, allNode) {
     // 这里是引用传递，有没有返回结果不重要
     return parentNodes;
 }
-
 
 
 export default {

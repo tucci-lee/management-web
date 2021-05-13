@@ -23,7 +23,7 @@
                 :data="roleData"
                 v-loading="loading"
                 style="width: 100%"
-                row-key="roleId"
+                row-key="id"
                 border>
             <el-table-column
                     prop="name"
@@ -42,7 +42,7 @@
                     show-overflow-tooltip>
             </el-table-column>
             <el-table-column
-                    prop="gmtCreate"
+                    prop="createTime"
                     label="创建时间"
                     width="180"
                     :formatter="createTimeFormatter">
@@ -91,7 +91,7 @@
                 </el-form-item>
                 <el-form-item label="资源" prop="resIds">
                     <el-tree
-                            node-key="resId"
+                            node-key="id"
                             show-checkbox
                             ref="addResTree"
                             :data="resData"
@@ -130,7 +130,7 @@
             <el-form :model="data.editRes" :rules="rules.editRes" ref="editResForm">
                 <el-form-item prop="resIds">
                     <el-tree
-                            node-key="resId"
+                            node-key="id"
                             show-checkbox
                             ref="editResTree"
                             :data="resData"
@@ -168,7 +168,7 @@
                     pageNum: 1,   // 分页条件, 默认一页10条
 
                     asc: false,   // 排序
-                    column: "role_id"
+                    column: "id"
                 },
                 show: {     // 添加修改的form显示
                     add: false,
@@ -184,7 +184,7 @@
                     },
                     edit: {},
                     editRes: { // 修改关联资源的数据
-                        roleId: null,
+                        id: null,
                         resIds: [] // 选中的资源id,弹出资源框时默认选中的数据
                     }
                 },
@@ -289,6 +289,7 @@
              */
             addRole() {
                 let resTree = this.$refs['addResTree'];
+                console.log(resTree)
                 // 选中的节点
                 let checkedResIds = resTree.getCheckedKeys();
                 // 半选中的节点
@@ -351,7 +352,7 @@
              * @param role
              */
             openEditRes(role) {
-                this.$axios.get("/sys/res/role/" + role.roleId)
+                this.$axios.get("/sys/res/role/" + role.id)
                     .then(res => {
                         if (!res.data.status) {
                             return;
@@ -359,7 +360,7 @@
                         // 设置默认选中的节点
                         this.data.editRes.resIds = this.getCheckedIds(this.resData, res.data.data);
                     });
-                this.data.editRes.roleId = role.roleId;
+                this.data.editRes.id = role.id;
                 this.show.editRes = true;
             },
             /**
@@ -408,7 +409,7 @@
                     type: 'warning',
                     center: true
                 }).then(() => {
-                    this.$axios.delete("/sys/role/" + role.roleId)
+                    this.$axios.delete("/sys/role/" + role.id)
                         .then(res => {
                             if (!res.data.status) {
                                 return;
@@ -435,8 +436,8 @@
                         checkedIds = checkedIds.concat(childArr);
                     } else {
                         for (let j of resIds) {
-                            if (i.resId === j) {
-                                checkedIds.push(i.resId);
+                            if (i.id === j) {
+                                checkedIds.push(i.id);
                             }
                         }
                     }

@@ -7,7 +7,7 @@
         <div style="margin-bottom: 10px">
             <el-form inline size="small">
                 <el-form-item label="搜索">
-                    <el-input v-model="search.username" placeholder="账号" clearable></el-input>
+                    <el-input v-model="search.account" placeholder="账号" clearable></el-input>
                 </el-form-item>
                 <el-form-item>
                     <el-input v-model="search.ip" placeholder="ip" clearable></el-input>
@@ -49,7 +49,7 @@
                 border
         >
             <el-table-column
-                    prop="username"
+                    prop="account"
                     label="账号"
                     width="150">
             </el-table-column>
@@ -81,7 +81,7 @@
                 </template>
             </el-table-column>
             <el-table-column
-                    prop="gmtCreate"
+                    prop="createTime"
                     label="创建时间"
                     width="180"
                     :formatter="createTimeFormatter">
@@ -121,7 +121,7 @@
                 loading: true,
                 total: 0,
                 search: {
-                    username: '',
+                    account: '',
                     ip: '',
                     status: '',
                     beginTime: '',

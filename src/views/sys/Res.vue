@@ -13,7 +13,7 @@
                 :data="resData"
                 v-loading="loading"
                 style="width: 100%"
-                row-key="resId"
+                row-key="id"
                 border
                 :tree-props="{children: 'children'}">
             <el-table-column
@@ -43,7 +43,7 @@
                     width="80">
             </el-table-column>
             <el-table-column
-                    prop="gmtCreate"
+                    prop="createTime"
                     label="创建时间"
                     width="180"
                     :formatter="createTimeFormatter">
@@ -152,7 +152,7 @@
                     checkStrictly: true,
                     children: 'children',
                     label: 'name',
-                    value: 'resId',
+                    value: 'id',
                 },
                 data: {           // 添加、修改资源的数据
                     add: {
@@ -325,7 +325,7 @@
                             this.data.edit.pid = 0;
                         }
                     }
-                    if (this.data.edit.pid === this.data.edit.resId) {
+                    if (this.data.edit.pid === this.data.edit.id) {
                         this.$message.error("资源上级不可以是当前资源");
                         return;
                     }
@@ -353,7 +353,7 @@
                     type: 'warning',
                     center: true
                 }).then(() => {
-                    this.$axios.delete("/sys/res/" + resource.resId)
+                    this.$axios.delete("/sys/res/" + resource.id)
                         .then(res => {
                             if (!res.data.status) {
                                 return;

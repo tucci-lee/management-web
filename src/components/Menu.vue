@@ -4,12 +4,12 @@
                  background-color="#545c64"
                  text-color="#fff"
                  active-text-color="#ffd04b">
-            <el-submenu v-for="menu in menus" :key="menu.resId" :index="menu.url?menu.url:menu.resId">
+            <el-submenu v-for="menu in menus" :key="menu.id" :index="menu.url?menu.url:menu.id">
                 <template slot="title">
                     <i :class="menu.icon"></i>
                     <span>{{menu.name}}</span>
                 </template>
-                <el-menu-item v-for="cmenu in menu.children" :key="cmenu.resId" :index="cmenu.url">
+                <el-menu-item v-for="cmenu in menu.children" :key="cmenu.id" :index="cmenu.url">
                     <i :class="cmenu.icon"></i>
                     <span slot="title">{{cmenu.name}}</span>
                 </el-menu-item>

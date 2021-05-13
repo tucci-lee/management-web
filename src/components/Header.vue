@@ -108,7 +108,7 @@
                     if (!valid) {
                         return false;
                     }
-                    this.$axios.put("/sys/user/change_pwd", this.changePwdData)
+                    this.$axios.put("/change_pwd", this.changePwdData)
                         .then(res => {
                             if (!res.data.status) {
                                 return;
