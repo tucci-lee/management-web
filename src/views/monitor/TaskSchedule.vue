@@ -319,7 +319,7 @@ export default {
   methods: {
     /** 加载任务 */
     loadData() {
-      this.$axios.get("/task/schedule", {
+      this.$axios.get("/monitor/task", {
         params: this.search,
       }).then(res => {
         this.loading = true;
@@ -348,7 +348,7 @@ export default {
         if (!valid) {
           return false;
         }
-        this.$axios.post("/task/schedule", this.data.add)
+        this.$axios.post("/monitor/task", this.data.add)
             .then(res => {
               if (!res.data.status) {
                 return;
@@ -375,7 +375,7 @@ export default {
         if (!valid) {
           return false;
         }
-        this.$axios.put("/task/schedule", this.data.edit)
+        this.$axios.put("/monitor/task", this.data.edit)
             .then(res => {
               if (!res.data.status) {
                 return;
@@ -403,7 +403,7 @@ export default {
         let body = {};
         body.id = task.id;
         body.status = !task.status;
-        this.$axios.put("/task/schedule/edit_status", body)
+        this.$axios.put("/monitor/task/edit_status", body)
             .then(res => {
               if (!res.data.status) {
                 return;
@@ -420,7 +420,7 @@ export default {
         type: 'warning',
         center: true
       }).then(() => {
-        this.$axios.delete("/task/schedule/" + data.id)
+        this.$axios.delete("/monitor/task/" + data.id)
             .then(res => {
               if (!res.data.status) {
                 return;
@@ -437,7 +437,7 @@ export default {
       this.show.startLog = true;
     },
     loadStartLog() {
-      this.$axios.get("/task/schedule/start/log", {
+      this.$axios.get("/monitor/task/start/log", {
         params: this.startLog.search,
       }).then(res => {
         this.loading = true;
@@ -457,7 +457,7 @@ export default {
       this.show.runLog = true;
     },
     loadRunData() {
-      this.$axios.get("/task/schedule/run/log", {
+      this.$axios.get("/monitor/task/run/log", {
         params: this.runLog.search,
       }).then(res => {
         this.loading = true;

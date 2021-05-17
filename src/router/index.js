@@ -15,7 +15,7 @@ import OperationLog from "../views/log/OperationLog";
 import Druid from "../views/monitor/Druid";
 import NotFound from "../views/error/NotFound";
 import SessionMonitor from "../views/monitor/SessionMonitor";
-import TaskSchedule from "../views/task/TaskSchedule";
+import TaskSchedule from "../views/monitor/TaskSchedule";
 
 Vue.use(VueRouter);
 
@@ -79,7 +79,7 @@ const routes = [
                 component: SessionMonitor
             },
             {
-                path: '/task/schedule',
+                path: '/monitor/task',
                 name: '定时任务',
                 component: TaskSchedule
             },
