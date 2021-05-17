@@ -182,7 +182,7 @@
                 v-loading="loading"
                 row-key="id"
                 border>
-        <el-table-column property="account" label="启动人" width="150"></el-table-column>
+        <el-table-column property="account" label="启动人" width="150" :formatter="accountFormatter"></el-table-column>
         <el-table-column property="status" label="启动状态" width="100">
           <template slot-scope="scope">
             <el-tag :type="scope.row.status ? 'primary' : 'danger'"
@@ -473,6 +473,9 @@ export default {
     /** 创建时间格式化 */
     createTimeFormatter(row, column, cellValue) {
       return this.$moment(parseInt(cellValue)).format("YYYY-MM-DD HH:mm:ss");
+    },
+    accountFormatter(row, column, cellValue) {
+      return cellValue ? cellValue : '系统';
     },
   }
 }
