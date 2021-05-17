@@ -199,7 +199,7 @@
                             {min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur'}
                         ],
                         roleChar: [
-                            {max: 50, message: '长度在 20 个字符'}
+                            {max: 20, message: '长度在 20 个字符'}
                         ],
                         remarks: [
                             {max: 200, message: '长度在 200 个字符'}
@@ -214,7 +214,7 @@
                             {min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur'}
                         ],
                         roleChar: [
-                            {max: 50, message: '长度在 20 个字符'}
+                            {max: 20, message: '长度在 20 个字符'}
                         ],
                         remarks: [
                             {max: 200, message: '长度在 200 个字符'}
@@ -417,9 +417,7 @@
                             this.$message.success("删除成功");
                             this.loadRole();
                         })
-                }).catch(() => {
-                    // do nothing
-                });
+                })
             },
             /**
              * elementui的tree组件，选中父节点后默认所有字节也被选中。

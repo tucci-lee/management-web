@@ -145,8 +145,6 @@
                             // 重新加载table
                             this.loadSession();
                         })
-                }).catch(() => {
-                    // do nothing
                 })
             }
         },

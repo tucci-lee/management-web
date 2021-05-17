@@ -282,9 +282,7 @@ export default {
               // 重新加载table
               this.loadDept();
             })
-      }).catch(() => {
-        // do nothing
-      });
+      })
     },
     /**
      * 创建时间格式化

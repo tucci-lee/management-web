@@ -500,8 +500,6 @@ export default {
               // 重新加载table
               this.loadUser();
             })
-      }).catch(() => {
-        // do nothing
       })
     },
     /**
@@ -551,9 +549,7 @@ export default {
               // 重新加载table
               this.loadUser();
             })
-      }).catch(() => {
-        // do nothing
-      });
+      })
     },
     /**
      * 修改用户密码
